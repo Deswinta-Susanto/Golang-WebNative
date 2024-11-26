@@ -40,7 +40,6 @@ func Add(w http.ResponseWriter, r *http.Request) {
 		category.CreatedAt = time.Now()
 		category.UpdatedAt = time.Now()
 
-		//misalkan insert data gagal
 		if ok := categorymodel.Create(category); !ok {
 			temp, _ := template.ParseFiles("views/category/create.html")
 			temp.Execute(w, nil)
@@ -50,7 +49,6 @@ func Add(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// function edit
 func Edit(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		temp, err := template.ParseFiles("views/category/edit.html")
